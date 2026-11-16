@@ -1,0 +1,13 @@
+{
+  "name": "devflow",
+  "owner": { "name": "eldrego" },
+  "metadata": { "description": "Free devflow skills for Claude Code: atomic Conventional Commits and clean JS/TS conventions." },
+  "plugins": [
+    {
+      "name": "devflow",
+      "source": "./plugins/devflow",
+      "description": "Atomic Conventional Commits with ticket references, and opinionated clean JS/TS conventions.",
+      "version": "1.0.0"
+    }
+  ]
+}

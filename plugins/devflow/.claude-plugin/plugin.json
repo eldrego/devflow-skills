@@ -1,0 +1,9 @@
+{
+  "name": "devflow",
+  "version": "1.0.0",
+  "description": "Atomic Conventional Commits with ticket references, and opinionated clean JS/TS conventions.",
+  "author": { "name": "eldrego" },
+  "repository": "https://github.com/eldrego/devflow-skills",
+  "license": "MIT",
+  "keywords": ["git", "conventional-commits", "javascript", "typescript", "clean-code"]
+}
