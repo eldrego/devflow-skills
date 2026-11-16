@@ -11,7 +11,7 @@ use_cases:
   - Fix or validate a commit message
   - Prepare a branch's history for a pull request
 docs_url: https://github.com/eldrego/devflow-skills
-allowed-tools: Bash(git status *) Bash(git diff *) Bash(git log *) Bash(git branch *) Bash(git rev-parse *) Bash(git add *) Bash(git commit *) Bash(${CLAUDE_SKILL_DIR}/scripts/branch-ticket.sh *) Bash(${CLAUDE_SKILL_DIR}/scripts/check-commit-msg.sh *)
+allowed-tools: Bash(git status *) Bash(git diff *) Bash(git log *) Bash(git branch *) Bash(git rev-parse *) Bash(git add *) Bash(git commit *) Bash(${CLAUDE_SKILL_DIR}/scripts/branch-ticket.sh *) Bash(${CLAUDE_SKILL_DIR}/scripts/check-commit-msg.sh *) Bash(bash ${CLAUDE_SKILL_DIR}/scripts/branch-ticket.sh *) Bash(bash ${CLAUDE_SKILL_DIR}/scripts/check-commit-msg.sh *)
 ---
 
 # Atomic commits
