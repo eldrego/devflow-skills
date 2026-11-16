@@ -31,7 +31,29 @@ Works best in Claude Code; works in any agent that runs skills. Part of **devflo
 
 ## See it in action
 
-TODO: paste a real run (700+ characters): the request, the commit plan it showed, and the final `git log`.
+**Request:** "commit my changes" (three new files implementing a discount-code lookup, on branch `feat/discount-config`)
+
+**Result:**
+
+I committed your changes as one commit on `feat/discount-config`, and I didn't push.
+
+`f3789ea feat(discounts): add discount code config and lookup`
+
+It contains `config/discount-codes.json`, `src/discounts.js` and `test/discounts.test.js`. The message passed the commit-message check, and the working tree is clean. The branch name has no ticket key, so no `Refs:` footer was added.
+
+**The commit message:**
+
+```
+feat(discounts): add discount code config and lookup
+
+Load discount codes from config/discount-codes.json and validate
+every entry (type, value range, minSubtotal, real expiry date,
+no duplicate codes). Lookup is case-insensitive and trims input.
+An invalid or unreadable config makes every code report as
+unavailable instead of throwing.
+```
+
+On a branch like `feat/SB-142-discounts`, the same commit would end with `Refs: SB-142`. When the changes span several concerns (say, a feature plus an unrelated fix), it proposes one commit per concern and shows the full plan before committing anything.
 
 ## Limitations
 

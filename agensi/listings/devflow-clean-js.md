@@ -30,7 +30,36 @@ Works best in Claude Code; works in any agent that runs skills. Part of **devflo
 
 ## See it in action
 
-TODO: paste a real run (700+ characters): a request such as "refactor this handler", and the before/after code with the lint result.
+**Request:** "Implement the approved plan for this branch. Run the tests when done." (a discount-code lookup in a small Node project; the skill loaded on its own because the task writes JS)
+
+**Result:**
+
+I implemented the plan in `docs/plan/discount-codes/discount-config.md`. `npm test` passes, with 7 tests: the new discount tests plus the existing cart tests.
+
+- **`config/discount-codes.json`:** three sample codes: `SAVE10` (percent), `FIVEOFF` (fixed, with `minSubtotal`) and `SUMMER25` (with `expiry`).
+- **`src/discounts.js`:** `loadCodes()` reads the config through `import.meta.url` and validates it. `findCode(input, load = loadCodes)` trims the input and matches case-insensitively, returning `{ok:true, code}` or `{ok:false, reason}`.
+- **`test/discounts.test.js`:** covers case-insensitive lookup, trimming, unknown, empty and non-string input, and the fail-closed cases.
+
+The project has no Biome or ESLint config, so the lint step didn't run.
+
+**What the conventions look like in the code:**
+
+```js
+export function findCode(input, load = loadCodes) {
+  let codes;
+  try {
+    codes = validateCodes(load());
+  } catch {
+    return UNAVAILABLE;
+  }
+  if (typeof input !== 'string') return NOT_FOUND;
+  const wanted = input.trim().toLowerCase();
+  const code = codes.find((entry) => entry.code.trim().toLowerCase() === wanted);
+  return code && wanted !== '' ? { ok: true, code } : NOT_FOUND;
+}
+```
+
+Named exports, guard clauses instead of nesting, named result constants instead of magic values, no mutation, and an injectable loader so tests don't touch the file system.
 
 ## Limitations
 
