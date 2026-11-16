@@ -5,6 +5,7 @@
 | Name | devflow-commit |
 | Price | Free |
 | Upload | `dist/devflow-commit-<version>.zip` |
+| Logo | `agensi/logos/devflow-commit.png` (512×512; SVG source alongside) |
 | Categories | Developer tools (first), Git, Productivity |
 | Tags | git, conventional-commits, commits, workflow, jira |
 | Compatibility | Requires git and bash (macOS or Linux). |

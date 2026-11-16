@@ -5,6 +5,7 @@
 | Name | devflow-clean-js |
 | Price | Free |
 | Upload | `dist/devflow-clean-js-<version>.zip` |
+| Logo | `agensi/logos/devflow-clean-js.png` (512×512; SVG source alongside) |
 | Categories | Developer tools (first), Code quality, JavaScript |
 | Tags | javascript, typescript, clean-code, react, node, testing |
 | Compatibility | Requires bash. Optional: Biome or ESLint configured in the project. |
