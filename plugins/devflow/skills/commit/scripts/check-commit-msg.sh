@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Usage: check-commit-msg.sh <message-file>
 # Checks a commit message against the Conventional Commits rules used by the
-# devflow-atomic-commits skill. Prints every problem found. Exit 1 on errors.
+# devflow commit skill. Prints every problem found. Exit 1 on errors.
 set -uo pipefail
 
 file="${1:-}"

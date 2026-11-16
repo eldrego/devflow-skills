@@ -26,7 +26,7 @@ Opinionated clean-code conventions your agent applies every time it writes or ch
 
 **Try it:** it runs on its own whenever your agent edits `.js`, `.jsx`, `.ts` or `.tsx` files. You can also ask "tidy this file" or "review this code's quality".
 
-Works best in Claude Code; works in any agent that runs skills. Part of **devflow**: devflow-code-review uses the same rules for its standards review.
+Works best in Claude Code; works in any agent that runs skills. Part of **devflow**: devflow-review uses the same rules for its standards review.
 
 ## See it in action
 

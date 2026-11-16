@@ -1,5 +1,5 @@
 ---
-name: devflow-atomic-commits
+name: commit
 description: Creates atomic git commits with Conventional Commits messages (title, optional body, optional footer), adding the ticket reference from the branch name. Use whenever the user asks to commit, stage and commit, save or check in their work, split changes into commits, write or fix a commit message, or prepare changes for a PR.
 summary: Turns your working tree into atomic Conventional Commits, one logical change each, with the ticket reference taken from the branch name. Shows the plan first, validates every message, never pushes.
 version: 1.0.0

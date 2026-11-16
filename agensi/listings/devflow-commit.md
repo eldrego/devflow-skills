@@ -1,10 +1,10 @@
-# devflow-atomic-commits
+# devflow-commit
 
 | Field | Value |
 |---|---|
-| Name | devflow-atomic-commits |
+| Name | devflow-commit |
 | Price | Free |
-| Upload | `dist/devflow-atomic-commits-<version>.zip` |
+| Upload | `dist/devflow-commit-<version>.zip` |
 | Categories | Developer tools (first), Git, Productivity |
 | Tags | git, conventional-commits, commits, workflow, jira |
 | Compatibility | Requires git and bash (macOS or Linux). |
@@ -27,7 +27,7 @@ Turns a messy working tree into clean, atomic commits with Conventional Commits 
 
 **Try it:** "commit my changes", "split this into commits", "fix my last commit message"
 
-Works best in Claude Code; works in any agent that runs skills. Part of **devflow**: pairs with devflow-ticket-plan and devflow-code-review for a full plan → review → commit loop.
+Works best in Claude Code; works in any agent that runs skills. Part of **devflow**: pairs with devflow-plan and devflow-review for a full plan → review → commit loop.
 
 ## See it in action
 

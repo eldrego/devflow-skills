@@ -1,5 +1,5 @@
 ---
-name: devflow-clean-js
+name: clean-js
 description: Load before creating or editing any .js, .jsx, .ts, .tsx, .mjs or .cjs file. Applies opinionated JavaScript/TypeScript clean-code conventions (Node, React, Express, browser, microfrontends) and runs the project's linters on the result. Use for every task that writes JS/TS — implementing a plan, ticket, feature or fix, creating or changing functions, components, hooks, state stores (Zustand, Redux), routes, services, configs, modules, or tests (Vitest, Jest, Playwright, node:test), refactoring or tidying code, and reviewing code quality — even if the user doesn't mention clean code or style.
 summary: Opinionated clean-code conventions for JavaScript and TypeScript (Node, React, Express, tests), applied whenever your agent writes or changes JS/TS. Your project's own config always wins.
 version: 1.0.0

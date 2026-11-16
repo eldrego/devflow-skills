@@ -2,13 +2,19 @@
 # Usage: scripts/build-agensi.sh
 # Checks every skill against the Agensi packaging rules and writes one ZIP per
 # skill (one Agensi listing each) to dist/. Exit 1 if any check fails.
+#
+# Skills keep short names in the repo (the Claude Code plugin namespaces them,
+# e.g. /devflow:commit). Agensi names must be unique across the platform, so
+# each ZIP's folder and frontmatter name get AGENSI_PREFIX (devflow-commit).
 set -uo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 dist="$root/dist"
+AGENSI_PREFIX="devflow-"
 MAX_SCRIPT_BYTES=20480
 MAX_FILES=200
 MAX_SUMMARY=300
+MAX_NAME=60
 
 if [ -x "$root/scripts/sync-shared.sh" ]; then
   "$root/scripts/sync-shared.sh" --check || exit 1
@@ -79,10 +85,20 @@ for dir in "$root"/plugins/*/skills/*/; do
   before=$failed
   failed=0
   check_skill "$dir" "$name"
+  listing="$AGENSI_PREFIX$name"
+  [ "${#listing}" -le "$MAX_NAME" ] || fail "Agensi name '$listing' is over $MAX_NAME characters"
   if [ "$failed" -eq 0 ]; then
     version="$(field "$(frontmatter "$dir/SKILL.md")" version)"
-    (cd "$(dirname "$dir")" && zip -qrX "$dist/$name-$version.zip" "$name" -x '*.DS_Store')
-    echo "  OK -> dist/$name-$version.zip"
+    stage="$(mktemp -d)"
+    cp -R "$dir" "$stage/$listing"
+    awk -v name="$listing" '
+      NR == 1 { in_fm = ($0 == "---"); print; next }
+      in_fm && $0 == "---" { in_fm = 0 }
+      in_fm && /^name:/ { print "name: " name; next }
+      { print }' "$dir/SKILL.md" >"$stage/$listing/SKILL.md"
+    (cd "$stage" && zip -qrX "$dist/$listing-$version.zip" "$listing" -x '*.DS_Store')
+    rm -rf "$stage"
+    echo "  OK -> dist/$listing-$version.zip"
   fi
   [ "$before" -eq 1 ] && failed=1
 done
